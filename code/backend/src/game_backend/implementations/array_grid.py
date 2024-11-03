@@ -70,13 +70,13 @@ class ArrayGrid(Grid):
         """
         Insert a tile into the grid.
         """
-        self.cells[tile.x][tile.y] = tile
+        self.cells[tile.position[0]][tile.position[1]] = tile
 
     def remove_tile(self, tile: ArrayTile) -> None:
         """
         Remove a tile from the grid.
         """
-        self.cells[tile.x][tile.y] = None
+        self.cells[tile.position[0]][tile.position[1]] = None
 
     def serialize(self) -> dict:
         """
