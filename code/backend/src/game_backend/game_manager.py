@@ -364,7 +364,7 @@ class GameManager:
                         logger.debug(f"Moving tile from {cell} to {farthest}")
                         self.move_tile(tile, farthest)
 
-                    if cell != tile.position():
+                    if cell != (tile.x, tile.y):
                         moved = True
 
         # if moved:
