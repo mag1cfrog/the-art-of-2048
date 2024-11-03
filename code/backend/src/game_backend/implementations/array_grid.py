@@ -45,6 +45,12 @@ class ArrayGrid(Grid):
         Check if there are any cells available.
         """
         return bool(self._available_cells())
+    
+    def cell_content(self, cell: tuple) -> ArrayTile:
+        if self.within_bounds(cell):
+            return self.cells[cell[0]][cell[1]]
+        else:
+            return None
 
     def within_bounds(self, position: tuple) -> bool:
         """
@@ -101,10 +107,6 @@ class ArrayGrid(Grid):
     def _cell_occupied(self, cell: tuple) -> bool:
         return bool(self._cell_content(cell))
 
-    def _cell_content(self, cell: tuple) -> ArrayTile:
-        if self.within_bounds(cell):
-            return self.cells[cell[0]][cell[1]]
-        else:
-            return None
+    
     
     
