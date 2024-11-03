@@ -105,7 +105,7 @@ class ArrayGrid(Grid):
         return [(x, y) for x in range(self.size) for y in range(self.size) if not self.cells[x][y]]
 
     def _cell_occupied(self, cell: tuple) -> bool:
-        return bool(self._cell_content(cell))
+        return bool(self.cell_content(cell))
 
     
     
