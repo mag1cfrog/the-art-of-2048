@@ -331,7 +331,12 @@ class GameManager:
                 if tile:
                     positions = self.find_farthest_position(cell, vector)
                     next_cell = positions['next']
-                    next_tile = self.grid.cell_content(next_cell)
+                    farthest = positions['farthest']
+
+                    if next_cell:
+                        next_tile = self.grid.cell_content(next_cell)
+                    else:
+                        next_tile = None
 
                     if next_tile and next_tile.value == tile.value and not getattr(next_tile, 'merged_from', None):
                         merged = self.tile_class(next_cell, tile.value * 2)
@@ -347,7 +352,7 @@ class GameManager:
                         if merged.value == 2048:
                             self.won = True
                     else:
-                        self.move_tile(tile, positions['farthest'])
+                        self.move_tile(tile, farthest)
 
                     if cell != tile.position():
                         moved = True

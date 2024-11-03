@@ -1,5 +1,5 @@
 import random
-from typing import List
+from typing import List, Optional
 
 from game_backend.interface.grid import Grid
 from game_backend.implementations.array_tile import ArrayTile
@@ -46,16 +46,18 @@ class ArrayGrid(Grid):
         """
         return bool(self._available_cells())
     
-    def cell_content(self, cell: tuple) -> ArrayTile:
+    def cell_content(self, cell: Optional[tuple]) -> Optional[ArrayTile]:
         if self.within_bounds(cell):
             return self.cells[cell[0]][cell[1]]
         else:
             return None
 
-    def within_bounds(self, position: tuple) -> bool:
+    def within_bounds(self, position: Optional[tuple]) -> bool:
         """
         Check if the specified position is within the grid bounds.
         """
+        if not position:
+            return False
         return 0 <= position[0] < self.size and 0 <= position[1] < self.size
 
     def cell_available(self, cell: tuple) -> bool:
