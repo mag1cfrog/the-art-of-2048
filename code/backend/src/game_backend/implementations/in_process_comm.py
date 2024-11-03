@@ -1,6 +1,6 @@
 from typing import Any, Dict
 
-from backend.interface.communication import CommunicationInterface
+from game_backend.interface.communication import CommunicationInterface
 from game_backend.game_manager import GameManager
 
 class InProcessCommunication(CommunicationInterface):
