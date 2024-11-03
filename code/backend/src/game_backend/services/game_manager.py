@@ -126,7 +126,7 @@ class GameManager:
 
         if moved:
             # Temprarily disabled adding random tile after each move for testing
-            # self.add_random_tile()
+            self.add_random_tile()
             if not self.moves_available():
                 self.over = True
 
