@@ -29,7 +29,7 @@ class LocalStorageManager:
         self.best_score_key: str = self.KEY_BEST_SCORE
         self.game_state_key: str = self.KEY_GAME_STATE
 
-        self.storage_file_location: Path = Path(storage_file)
+        self.storage_path: Path = Path(storage_file)
         self._data: Dict[str, Any] = {}
 
         if self.local_storage_supported():
@@ -47,9 +47,9 @@ class LocalStorageManager:
         """
         try:
             # Attempt to create or open the storage file
-            if not self.storage_file_location.exists():
-                self.storage_file_location.touch()
-                self.storage_file_location.write_text("{}")
+            if not self.storage_path.exists():
+                self.storage_path.touch()
+                self.storage_path.write_text("{}")
 
             # Attempt to read and write to the storage file
             temp_data = {"test": "1"}
