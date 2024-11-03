@@ -5,7 +5,7 @@ import logging
 
 from game_backend.interface.grid import Grid
 from game_backend.interface.tile import Tile
-from game_backend.local_storage_manager import LocalStorageManager
+from game_backend.services.local_storage_manager import LocalStorageManager
 
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)

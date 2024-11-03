@@ -1,7 +1,7 @@
 from typing import Any, Dict
 
 from game_backend.interface.communication import CommunicationInterface
-from game_backend.game_manager import GameManager
+from game_backend.services.game_manager import GameManager
 
 class InProcessCommunication(CommunicationInterface):
     def __init__(self, game_manager: GameManager):

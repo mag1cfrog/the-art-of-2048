@@ -1,8 +1,7 @@
-from game_backend.implementations.array_tile import ArrayTile
-from game_backend.implementations.array_grid import ArrayGrid
-from game_backend.game_manager import GameManager
-from game_backend.local_storage_manager import LocalStorageManager
-from game_backend.implementations.in_process_comm import InProcessCommunication
+from game_backend.core.array_backend import ArrayTile, ArrayGrid
+from game_backend.core.comm import InProcessCommunication
+from game_backend.services import GameManager, LocalStorageManager
+
 
 def main():
     # Initialize storage manager

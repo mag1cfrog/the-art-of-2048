@@ -1,0 +1,1 @@
+from .in_process_comm import InProcessCommunication

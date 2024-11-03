@@ -2,7 +2,7 @@ import random
 from typing import List, Optional
 
 from game_backend.interface.grid import Grid
-from game_backend.implementations.array_tile import ArrayTile
+from game_backend.core.array_backend.tile import ArrayTile
 
 class ArrayGrid(Grid):
     """
