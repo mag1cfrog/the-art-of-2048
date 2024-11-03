@@ -249,7 +249,7 @@ class GameManager:
             cell (tuple): The target cell position.
         """
         self.grid.remove_tile(tile)
-        self.grid.insert_tile(tile_class=self.tile_class(position=cell, value=tile.value))
+        self.grid.insert_tile(self.tile_class(position=cell, value=tile.value))
         tile.update_position(cell)
 
     def prepare_tiles(self) -> None:
