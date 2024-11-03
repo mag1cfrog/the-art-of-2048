@@ -26,10 +26,6 @@ class Grid(ABC):
         pass
 
     @abstractmethod
-    def each_cell(self):
-        pass
-
-    @abstractmethod
     def cells_available(self):
         pass
 
