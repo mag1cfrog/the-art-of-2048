@@ -1,4 +1,4 @@
-from backend.src.interface.tile import Tile
+from game_backend.interface.tile import Tile
 
 class ArrayTile(Tile):
     """
