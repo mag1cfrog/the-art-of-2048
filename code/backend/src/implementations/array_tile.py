@@ -2,7 +2,7 @@ from backend.src.interface.tile import Tile
 
 class ArrayTile(Tile):
     """
-    Tile implementation using nested lists as 2D array.
+    Tile implementation complying with 2D array grid.
     """
     def __init__(self, position: tuple, value: int = 2) -> None:
         self.x, self.y = position
