@@ -10,19 +10,11 @@ class Grid(ABC):
         pass
 
     @abstractmethod
-    def empty(self):
-        pass
-    
-    @abstractmethod
     def from_state(self, state):
         pass
     
     @abstractmethod
     def random_available_cell(self):
-        pass
-
-    @abstractmethod
-    def available_cells(self):
         pass
 
     @abstractmethod
@@ -34,23 +26,11 @@ class Grid(ABC):
         pass
 
     @abstractmethod
-    def cell_occupied(self, cell):
-        pass
-
-    @abstractmethod
-    def cell_content(self, cell):
-        pass
-
-    @abstractmethod
     def insert_tile(self, tile):
         pass
 
     @abstractmethod
     def remove_tile(self, tile):
-        pass
-
-    @abstractmethod
-    def within_bounds(self, position):
         pass
 
     @abstractmethod
