@@ -1,4 +1,3 @@
-# cli_frontend/main.py
 import curses
 from cli_frontend.game_loop import GameLoop
 from cli_frontend.renderer import Renderer
