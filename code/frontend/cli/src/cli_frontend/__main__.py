@@ -6,33 +6,23 @@ from game_backend.core.array_backend import ArrayGrid, ArrayTile
 from game_backend.core.comm import InProcessCommunication
 from game_backend.services import GameManager, LocalStorageManager
 
-def main(stdscr: curses.window) -> None:
+def initialize_cli_frontend(stdscr, communication):
     """
-    Entry point for the CLI frontend.
-
-    Initializes the game components and starts the game loop.
+    Initializes the CLI frontend with the provided communication interface.
 
     Args:
         stdscr (curses.window): The curses window object.
+        communication (InProcessCommunication): Communication interface with the backend.
+    
+    Returns:
+        GameLoop: An instance of the game loop.
     """
-    # Initialize backend components
-    storage_manager = LocalStorageManager()
-    grid = ArrayGrid(size=4)
-    tile_class = ArrayTile
-    game_manager = GameManager(grid=grid, tile_class=tile_class, storage_manager=storage_manager)
-    communication = InProcessCommunication(game_manager=game_manager)
-
-    # Initialize frontend components
     renderer = Renderer(stdscr)
     input_handler = InputHandler()
-
-    # Start the game loop
     game_loop = GameLoop(
         communication=communication,
         renderer=renderer,
         input_handler=input_handler
     )
-    game_loop.run()
+    return game_loop
 
-if __name__ == "__main__":
-    curses.wrapper(main)
