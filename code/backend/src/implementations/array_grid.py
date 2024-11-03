@@ -46,6 +46,12 @@ class ArrayGrid(Grid):
         """
         return bool(self._available_cells())
 
+    def within_bounds(self, position: tuple) -> bool:
+        """
+        Check if the specified position is within the grid bounds.
+        """
+        return 0 <= position[0] < self.size and 0 <= position[1] < self.size
+
     def cell_available(self, cell: tuple) -> bool:
         """
         Check if the specified cell is taken
@@ -66,7 +72,7 @@ class ArrayGrid(Grid):
 
     def serialize(self) -> dict:
         """
-        Serialize the grid state.
+        Serialize the grid.
         """
         cell_state = []
         for x in range(self.size):
@@ -96,10 +102,9 @@ class ArrayGrid(Grid):
         return bool(self._cell_content(cell))
 
     def _cell_content(self, cell: tuple) -> ArrayTile:
-        if self._within_bounds(cell):
+        if self.within_bounds(cell):
             return self.cells[cell[0]][cell[1]]
         else:
             return None
     
-    def _within_bounds(self, position) -> bool:
-        return 0 <= position[0] < self.size and 0 <= position[1] < self.size
+    
