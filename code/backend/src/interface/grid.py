@@ -22,6 +22,10 @@ class Grid(ABC):
         pass
 
     @abstractmethod
+    def within_bounds(self, position):
+        pass
+
+    @abstractmethod
     def cell_available(self, cell):
         pass
 
