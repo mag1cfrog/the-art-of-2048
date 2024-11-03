@@ -1,5 +1,5 @@
 [project]
-name = "backend"
+name = "game_backend"
 version = "0.1.0"
 description = "Default template for PDM package"
 authors = [
@@ -7,7 +7,6 @@ authors = [
 ]
 dependencies = []
 requires-python = ">=3.12"
-readme = "README.md"
 license = {text = "MIT"}
 
 [build-system]

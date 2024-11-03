@@ -1,9 +1,9 @@
 import random
 from typing import Type, Optional, Dict, Any
 
-from backend.interface.grid import Grid
-from backend.interface.tile import Tile
-from backend.local_storage_manager import LocalStorageManager
+from game_backend.interface.grid import Grid
+from game_backend.interface.tile import Tile
+from game_backend.local_storage_manager import LocalStorageManager
 
 class GameManager:
     """
