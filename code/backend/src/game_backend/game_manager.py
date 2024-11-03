@@ -1,9 +1,15 @@
 import random
 from typing import Type, Optional, Dict, Any
+import logging
+
 
 from game_backend.interface.grid import Grid
 from game_backend.interface.tile import Tile
 from game_backend.local_storage_manager import LocalStorageManager
+
+# Configure logging
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 
 class GameManager:
     """
@@ -335,10 +341,13 @@ class GameManager:
 
                     if next_cell:
                         next_tile = self.grid.cell_content(next_cell)
+                        logger.debug(f"Next tile at {next_cell}: {next_tile}")
                     else:
                         next_tile = None
+                        logger.debug("Next cell is None")
 
                     if next_tile and next_tile.value == tile.value and not getattr(next_tile, 'merged_from', None):
+                        logger.debug(f"Merging tile at {cell} with tile at {next_cell}")
                         merged = self.tile_class(next_cell, tile.value * 2)
                         merged.merged_from = [tile, next_tile]
 
@@ -352,6 +361,7 @@ class GameManager:
                         if merged.value == 2048:
                             self.won = True
                     else:
+                        logger.debug(f"Moving tile from {cell} to {farthest}")
                         self.move_tile(tile, farthest)
 
                     if cell != tile.position():
