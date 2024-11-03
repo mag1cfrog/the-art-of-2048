@@ -1,8 +1,8 @@
 import random
 from typing import List
 
-from backend.src.interface.grid import Grid
-from backend.src.implementations.array_tile import ArrayTile
+from game_backend.interface.grid import Grid
+from game_backend.implementations.array_tile import ArrayTile
 
 class ArrayGrid(Grid):
     """
