@@ -32,7 +32,7 @@ from game_backend.services import GameManager, LocalStorageManager
 
 def main():
     import uvicorn
-    uvicorn.run("game_backend.services.api_server:app", host="0.0.0.0", port=8000)
+    uvicorn.run("game_backend.services.static_server:app", host="0.0.0.0", port=8000)
 
 if __name__ == "__main__":
     main()
