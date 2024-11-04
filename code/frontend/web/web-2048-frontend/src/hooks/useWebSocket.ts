@@ -13,10 +13,10 @@ export const useWebSocket = () => {
       wsRef.current = ws;
 
       ws.onopen = () => {
+        console.log('WebSocket connection established');
         setConnectionStatus('Connected');
-        console.log('Connected to WebSocket server');
         // Request initial game state
-        ws.send(JSON.stringify({ type: 'init' }));
+        // ws.send(JSON.stringify({ type: 'init' }));
       };
 
       ws.onmessage = (event) => {
