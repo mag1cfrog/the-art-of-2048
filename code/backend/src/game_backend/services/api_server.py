@@ -1,8 +1,12 @@
-from fastapi import FastAPI, WebSocket, WebSocketDisconnect
-from game_backend.services import GameManager, LocalStorageManager
-from game_backend.core.array_backend import ArrayGrid, ArrayTile
 from typing import Dict, Optional, Any
 import json
+
+from fastapi import FastAPI, WebSocket, WebSocketDisconnect
+from fastapi.middleware.cors import CORSMiddleware
+
+from game_backend.services import GameManager, LocalStorageManager
+from game_backend.core.array_backend import ArrayGrid, ArrayTile
+
 
 app = FastAPI()
 
@@ -62,3 +66,10 @@ async def game_endpoint(websocket: WebSocket):
     except WebSocketDisconnect:
         manager.disconnect(session_id)
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # In production, replace with specific origins
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
