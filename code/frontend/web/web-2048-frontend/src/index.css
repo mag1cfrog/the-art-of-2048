@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply antialiased text-gray-900 bg-gray-100;
+  }
+}
+
+@layer components {
+  .tile-2 { @apply bg-purple-200; }
+  .tile-4 { @apply bg-purple-300; }
+  .tile-8 { @apply bg-purple-400; }
+  .tile-16 { @apply bg-purple-500; }
+  .tile-32 { @apply bg-purple-600; }
+  .tile-64 { @apply bg-indigo-500; }
+  .tile-128 { @apply bg-indigo-600; }
+  .tile-256 { @apply bg-pink-500; }
+  .tile-512 { @apply bg-pink-600; }
+  .tile-1024 { @apply bg-rose-500; }
+  .tile-2048 { @apply bg-rose-600; }
+
+  /* Disable focus outlines for all buttons */
+  button:focus {
+    outline: none;
+    box-shadow: none;
+  }
+
+  /* Disable caret and selection for non-interactive elements */
+  .no-caret, .no-caret * {
+    caret-color: transparent;
+    user-select: none;
+  }
+
+  /* Optionally, you can apply .no-caret to specific classes if needed */
+}
