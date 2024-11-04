@@ -29,13 +29,17 @@ RUN pip install --no-cache-dir /app/backend/game_backend-0.1.2-py3-none-any.whl
 # Copy frontend build from frontend-builder
 COPY --from=frontend-builder /app/frontend/dist /app/frontend/build
 
-# Configure host settings
+# Configure environment variables
 ENV PYTHONUNBUFFERED=1
-# ENV DOCKER_INTERNAL_HOST=host.docker.internal
-# RUN /bin/bash -c 'echo "$(getent hosts host.docker.internal | cut -d" " -f1) host.docker.internal" >> /etc/hosts || true'
+ENV PORT=8000
 
-# Expose port
+# Create script to start the application
+RUN echo '#!/bin/bash\n\
+python3 -m game_backend --port ${PORT:-8000}' > /app/start.sh && \
+chmod +x /app/start.sh
+
+# Expose default port
 EXPOSE 8000
 
-# Set entry point to run the backend module
-CMD ["python3", "-m", "game_backend"]
+# Set entry point to run the start script
+CMD ["/app/start.sh"]
