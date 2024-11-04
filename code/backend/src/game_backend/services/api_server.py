@@ -10,6 +10,14 @@ from game_backend.core.array_backend import ArrayGrid, ArrayTile
 
 app = FastAPI()
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # In production, replace with specific origins
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 class ConnectionManager:
     def __init__(self):
         self.active_connections: Dict[str, WebSocket] = {}
@@ -44,6 +52,8 @@ manager = ConnectionManager()
 
 @app.websocket("/ws/game")
 async def game_endpoint(websocket: WebSocket):
+    # Allow any origin for WebSocket connections
+    await websocket.accept()
     session_id = await manager.connect(websocket)
     game_manager = manager.get_game_manager(session_id)
     try:
@@ -66,10 +76,3 @@ async def game_endpoint(websocket: WebSocket):
     except WebSocketDisconnect:
         manager.disconnect(session_id)
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],  # In production, replace with specific origins
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
