@@ -1,6 +1,6 @@
 [project]
 name = "game_backend"
-version = "0.1.1"
+version = "0.1.2"
 description = "Default template for PDM package"
 authors = [
     {name = "mag1cfrog", email = "harrywong2017@gmail.com"},
