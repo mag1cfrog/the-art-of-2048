@@ -1,3 +1,5 @@
+import os
+
 from game_backend.core.array_backend import ArrayTile, ArrayGrid
 from game_backend.core.comm import InProcessCommunication
 from game_backend.services import GameManager, LocalStorageManager
@@ -31,8 +33,13 @@ from game_backend.services import GameManager, LocalStorageManager
 #     print("Game Over!")
 
 def main():
+    port = int(os.environ.get("PORT", 8000))
     import uvicorn
-    uvicorn.run("game_backend.services.static_server:app", host="0.0.0.0", port=8000)
+    uvicorn.run(
+        "game_backend.services.static_server:app", 
+        host="0.0.0.0", 
+        port=port
+    )
 
 if __name__ == "__main__":
     main()
