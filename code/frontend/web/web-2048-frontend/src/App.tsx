@@ -6,6 +6,7 @@ import { ScoreBoard } from './components/ScoreBoard';
 import { useWebSocket } from './hooks/useWebSocket';
 import { useKeyboard } from './hooks/useKeyboard';
 
+
 function App() {
   const [gameState, setGameState] = useState({
     grid: Array(4).fill(null).map(() => Array(4).fill(null)),
