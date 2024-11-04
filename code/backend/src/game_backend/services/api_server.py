@@ -24,7 +24,7 @@ class ConnectionManager:
         self.game_managers: Dict[str, GameManager] = {}
 
     async def connect(self, websocket: WebSocket) -> str:
-        await websocket.accept()
+        # await websocket.accept()
         session_id = str(id(websocket))
         self.active_connections[session_id] = websocket
 
